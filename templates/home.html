@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Group 6 - Boston House Pricing</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arimo"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      body {
+        background-color: #f0f0f0;
+        font-family: "Arimo", sans-serif;
+      }
+
+      .login {
+        width: 400px;
+        margin: 0 auto;
+        margin-top: 100px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #f8f8f8;
+        font-size: 14px;
+        color: #444;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 3px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .prediction {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      h4 {
+        margin: 0;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login">
+      <h1>Group 6</h1>
+      <h1>Boston House Price Prediction</h1>
+
+      <h2>Student Information</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Student ID</th>
+          <th>Email</th>
+        </tr>
+        <tr>
+          <td>Bindya Biju</td>
+          <td>100886575</td>
+          <td>bindia.biju@dcmail.ca</td>
+        </tr>
+        <tr>
+          <td>Abishek</td>
+          <td>100856936</td>
+          <td>abishek.kailasam@dcmail.ca</td>
+        </tr>
+        <tr>
+          <td>Spandana</td>
+          <td>100866969</td>
+          <td>spandana.rajamahanthi@dcmail.ca</td>
+        </tr>
+        <tr>
+          <td>Sanath Davis</td>
+          <td>100884693</td>
+          <td>sanath.davis@dcmail.ca</td>
+        </tr>
+      </table>
+
+      <h2>House Information</h2>
+
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <input type="text" name="CRIM" placeholder="CRIM" required="required" />
+        <input type="text" name="ZN" placeholder="ZN" required="required" />
+        <input
+          type="text"
+          name="INDUS"
+          placeholder="INDUS"
+          required="required"
+        />
+        <input type="text" name="CHAS" placeholder="CHAS" required="required" />
+        <input type="text" name="NOX" placeholder="NOX" required="required" />
+        <input type="text" name="RM" placeholder="RM" required="required" />
+        <input type="text" name="Age" placeholder="Age" required="required" />
+        <input type="text" name="DIS" placeholder="DIS" required="required" />
+        <input type="text" name="RAD" placeholder="RAD" required="required" />
+        <input type="text" name="TAX" placeholder="TAX" required="required" />
+        <input
+          type="text"
+          name="PTRATIO"
+          placeholder="PTRATIO"
+          required="required"
+        />
+        <input type="text" name="B" placeholder="B" required="required" />
+        <input
+          type="text"
+          name="LSTAT"
+          placeholder="LSTAT"
+          required="required"
+        />
+        <button type="submit">Predict</button>
+      </form>
+
+      <!-- Placeholder for displaying prediction result -->
+      {% if prediction_text %}
+      <div class="prediction">The Predicted price is : {{prediction_text}}</div>
+      {% endif %}
+    </div>
+  </body>
+</html>
